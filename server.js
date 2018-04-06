@@ -26,7 +26,6 @@ mongoose.connect("mongodb://localhost/NYData");
 //ROUTES
 //Main route
 app.get("/", function(req, res){
-  // res.send(index.html);
   res.render("index", req.body);
 });
 
@@ -48,7 +47,8 @@ app.post("/submit", function(req, res){
 app.get("/articles", function(req,res){
   db.Article.find({})
     .then(function(dbArticle){
-      res.json(dbArticle);
+      // res.json(dbArticle);
+      res.render("index", {article: dbArticle});
     })
     .catch(function(err){
       res.json(err);

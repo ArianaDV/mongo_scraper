@@ -1,8 +1,8 @@
 <style media="screen">
   li {
     height : 100px;
-    width: 100px;
-    color: red;
+    width: 100%;
+    color: white;
     background-color: purple;
     margin-bottom: 30px;
   }
@@ -12,7 +12,10 @@
 
 <ul>
 {{#each article }}
-  <li>{{title}}</li>
-  <li>{{link}}</li>
+  <li>
+  <p>Title: {{title}}</p>
+  <a href={{link}}>Link: {{link}}</a> 
+  </li>
+  
 {{/each}}
 </ul>
