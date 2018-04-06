@@ -24,8 +24,10 @@ app.set("view engine", "handlebars");
 mongoose.connect("mongodb://localhost/NYData");
 
 //ROUTES
-//Main route
-app.get("/", function(req, res){
+var htmlroutes = require("./routes/htmlRoutes")(app);
+// require("./routes/htmlRoutes")(app);
+
+app.get("/articles", function(req, res){
   res.render("index", req.body);
 });
 
@@ -41,18 +43,6 @@ app.post("/submit", function(req, res){
       res.send(saved);
     }
   });
-});
-
-//Get all scraped data from DB
-app.get("/articles", function(req,res){
-  db.Article.find({})
-    .then(function(dbArticle){
-      // res.json(dbArticle);
-      res.render("index", {article: dbArticle});
-    })
-    .catch(function(err){
-      res.json(err);
-    });
 });
 
 //Making a request for NYTime's page
