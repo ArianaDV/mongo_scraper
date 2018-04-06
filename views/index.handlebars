@@ -1,0 +1,18 @@
+<style media="screen">
+  li {
+    height : 100px;
+    width: 100px;
+    color: red;
+    background-color: purple;
+    margin-bottom: 30px;
+  }
+</style>
+
+<h1>NY Times Articles</h1>
+
+<ul>
+{{#each article }}
+  <li>{{title}}</li>
+  <li>{{link}}</li>
+{{/each}}
+</ul>

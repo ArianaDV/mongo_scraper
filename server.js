@@ -1,5 +1,6 @@
 // Dependencies
 var express = require("express");
+var exphbs = require("express-handlebars");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
@@ -18,14 +19,15 @@ app.use(logger("dev"));
 //set up body-parser
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static("public"));
-
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 mongoose.connect("mongodb://localhost/NYData");
-
 
 //ROUTES
 //Main route
 app.get("/", function(req, res){
-  res.send(index.html);
+  // res.send(index.html);
+  res.render("index", req.body);
 });
 
 //Save form submission!!
