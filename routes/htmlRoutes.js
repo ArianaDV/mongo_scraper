@@ -1,4 +1,6 @@
 var db = require("../models");
+var cheerio = require("cheerio");
+var request = require("request");
 
 module.exports = function(app) {
 // Below code handles when users "visit" a page.
@@ -30,7 +32,11 @@ app.get("/scrape", function(req,res){
     result.link = $(this)
       .children("a")
       .attr("href");
-  
+    result.summary = $(this)
+    .nextAll(".summary");
+    // .hasClass("summary")
+    console.log(result.summary);
+    
     db.Article.create(result)
       .then(function(dbArticle){
         console.log(dbArticle);

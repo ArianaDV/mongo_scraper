@@ -14,6 +14,17 @@ var db = require("./models");
 
 // Initialize Express
 var app = express();
+var PORT = process.env.PORT || 3000;
+
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/TimesData";
+
+// Set mongoose to leverage built in JavaScript ES6 Promises
+// Connect to the Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI, {
+  useMongoClient: true
+});
 
 app.use(logger("dev"));
 //set up body-parser
@@ -21,12 +32,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static("public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-mongoose.connect("mongodb://localhost/NYData");
 
 //ROUTES
 var htmlroutes = require("./routes/htmlRoutes")(app);
 var apiroutes = require("./routes/apiRoutes")(app);
 
-app.listen(3000, function() {
+app.listen(PORT, function() {
   console.log("App running on port 3000!");
 });
