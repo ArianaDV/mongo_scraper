@@ -49,11 +49,11 @@ app.get("/scrape", function(req,res){
     });
   });
   
-//Save form submission - Incomplete
+//Save form submission - Incomplete!!!
 app.post("/submit", function(req, res){
     console.log(req.body);
   
-    db.notes.insert(req.body, function(error, saved){
+    db.Note.insert(req.body, function(error, saved){
       if(error){
         console.log(error);
       }
