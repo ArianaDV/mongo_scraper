@@ -6,7 +6,7 @@ module.exports = function(app) {
 // Below code handles when users "visit" a page.
 
     //Get all scraped data from DB
-    app.get("/", function(req,res){
+    app.get("/index", function(req,res){
         db.Article.find({})
           .then(function(dbArticle){
             res.render("index", {article: dbArticle});
@@ -18,7 +18,7 @@ module.exports = function(app) {
 
     //Making a request for NYTime's page
 // Scrape data from one site and place it into the mongodb db
-app.get("/scrape", function(req,res){
+app.get("/", function(req,res){
     request("https://www.nytimes.com/section/technology", function(error, response, html){
   
     var $ = cheerio.load(html);
@@ -34,7 +34,6 @@ app.get("/scrape", function(req,res){
       .attr("href");
     result.summary = $(this)
     .nextAll(".summary");
-    // .hasClass("summary")
     console.log(result.summary);
     
     db.Article.create(result)
@@ -45,7 +44,7 @@ app.get("/scrape", function(req,res){
         return res.json(err);
       });
     });
-    res.send("Scrape Complete");
+    res.redirect("/index");
     });
   });
   
