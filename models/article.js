@@ -4,9 +4,11 @@ var Schema = mongoose.Schema;
 
 //Schema constructor - creates new object
 var aSchema = new Schema({
+    
     title: {
         type: String,
-        required: true
+        unique: true,
+        required: true 
     },
     link: {
         type: String,
