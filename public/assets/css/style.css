@@ -1,0 +1,44 @@
+body {
+    background-color: rgba(63, 63, 175, 0.767) !important;
+}
+
+.fixed-top {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    z-index: 1030 !important;
+    border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+}
+
+.bg-primary {
+    background-color: #78C2AD !important;
+}
+
+#article {
+    background-color: aliceblue;
+    padding: 1%;
+    margin-top: 10px;
+}
+
+#input {
+    width: 30%;
+}
+
+h3 {
+    font: bold;
+}
+
+ul {
+    margin-left: -4%;
+    
+}
+.container{
+    margin-top: 10%;
+}
+
+h1 {
+    padding: 1%;
+}
+

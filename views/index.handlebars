@@ -1,41 +1,15 @@
-<style media="screen">
-  h1{
-    margin-left: 3%;
-  }
-  li {
-    height : 10%;
-    width: 60%;
-    color: white;
-    background-color: rgba(63, 63, 175, 0.767);
-    margin-bottom: 30px;
-  }
-
-  a {
-    color:white;  
-  }
-
-  #comments{
-    margin-top: 5%;
-  }
-
-</style>
-
-<h1>NY Times Articles</h1>
 
 <ul>
 {{#each article }}
-  <li>
-  <div>
-  <p>Title: {{{title}}}</p>
-  <p>Summary: {{{summary}}}</p>
-  <a href={{link}}>Link: {{link}}</a> 
+  <div id="article">
+  <h3>{{{title}}}</h3>
+  <p>{{{summary}}}</p>
+  <a href={{link}}>Link to full story: {{link}}</a> 
 <div id="comments"></div>
-  <form action="/submit" method="post">
-      <input type="text" name="username" placeholder="Name">
-      <input type="text" name ="comment" placeholder="Comment on this article">
-      <input type="submit">
+  <form class="form-inline" action="/submit" method="post">
+      <input class="form-control" id="input" type="text" name ="comment" placeholder="Comment on this article">
+      <input type="submit" class="btn btn-primary" type="submit">
   </form>
   </div>
-  </li>
 {{/each}}
 </ul>
